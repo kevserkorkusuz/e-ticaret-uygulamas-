@@ -1,0 +1,26 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block title  %}
+      <title>Detay</title>
+{% endblock title  %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+          <div class="col-4">
+            <img src="{{urun.resim.url}}" width="100%" alt="">
+          </div>
+          <div class="col-8">
+            <h5> {{urun.isim}} </h5>
+            <p>  <b>Kategori: </b> {{urun.kategori.isim}} </p>
+            <p> {{urun.aciklama}} </p>
+            <p> {{urun.fiyat}} </p>
+            
+          </div>
+        </div>
+      </div>
+
+{% endblock content %}
+

@@ -30,6 +30,10 @@ urlpatterns = [
     path('giris/', giris, name='login'),
     path('cikis/', cikis, name='logout'),
     path('olustur/', olustur, name='olustur'),
-    path('sepet/', sepet, name='sepet')
+    path('sepet/', sepet, name='sepet'),
+    path('payment/', payment, name='payment'),
+    path('result/', result, name='result'),
+    path('success/', success, name='success'),
+    path('fail/', fail, name='failure')
     
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

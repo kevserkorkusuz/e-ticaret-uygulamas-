@@ -6,8 +6,13 @@
       <div class="row">
         {% if sepet|length > 0 %}
         {% for urun in sepet %}
-       
-        <div class="col-4">
+
+        <div class="col-4 position-relative">
+          <form action="" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="urunId" value="{{urun.id}}">
+            <input type="submit" value="" name= "sil" class="btn-close position-absolute end-0 mt-2 me-4 z-3">
+          </form>
           <div class="card">
             <img class="card-img-top" src="{{urun.urun.resim.url}}" height="250" alt="Card image cap">
             <div class="card-body">
@@ -16,24 +21,29 @@
                 <p>Satıcı: {{urun.urun.satici.username}} </p>
               </div>
               <p> {{urun.urun.kategori.isim}} </p>
-              <!--Manytomany yazdırılması ; birden fazla kategori olduğu için döngü kullanılır-->
-              {% for alt in urun.altkategori.all  %}
-                  <small> {{alt.isim}} </small>
-              {% endfor %}
               <p class="card-text">{{urun.urun.aciklama}}</p>
-              <p>Fiyat : {{urun.urun.fiyat}} tl </p>
+              <p> Fiyat : {{urun.urun.fiyat}} tl </p>
               <p> Adet: {{urun.adet}} </p>
-              <p>Toplam Fiyat: {{urun.toplamFiyat}} </p>
-            
+              <p> Toplam Fiyat: {{urun.toplamFiyat}} </p>
             </div>
           </div>
                   </div>
-        
+
         {% endfor %}
+
         {% else %}
         <h1>Eşleşen üsün bulunmamaktadır</h1>
         {% endif %}
+
       </div>
+
+      <p class="mt-4 fs-3">
+        Toplam Fiyat: {{toplam}} TL
+      </p>
+
+      <form action="" method="POST">
+        {% csrf_token %}
+        <input type="submit" value="Ödeme Yap" class="btn btn-primary mt-2">
+      </form>
     </div>
-   
 {% endblock content %}
